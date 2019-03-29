@@ -7,11 +7,7 @@ pipeline {
                 sh './build/clean.sh'
                 sh './build/build.sh'
                 sh './build/tag.sh'
-                withDockerRegistry([ credentialsId: "docker-hub", url: "https://index.docker.io/v1/":
-				{
-					"auth": "aW5hc3I6UGFzc3cwcmQy"
-				}
-				]) 
+                withDockerRegistry([ credentialsId: "docker-hub", url: "https://index.docker.io/v1/" ,"auth": "aW5hc3I6UGFzc3cwcmQy"]) 
 				{
                     sh './build/push.sh'
                 }
